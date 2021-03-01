@@ -1,0 +1,19 @@
+//NOUNS
+
+Players
+
+//state
+Lives
+Number
+
+subtract_life
+
+Questions
+generate_question
+Questions
+answer
+check_answer
+
+Game
+Current Players
+next_turn
