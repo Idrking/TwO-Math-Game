@@ -11,6 +11,22 @@ class Game
 
   attr_accessor :players, :isOver, :currentTurn
 
+  
+  def game_over?
+    players[0].lives == 0 || players[1].lives == 0
+  end
+  
+  def game_end(currentTurn)
+    winning_player = players[currentTurn]
+    puts "\n---- GAME OVER ----"
+    puts "Player #{winning_player.id} wins with a score of #{winning_player.lives}/3" 
+  end
+
+  def advance_turn
+    self.currentTurn = self.currentTurn == 0 ? 1 : 0
+    puts "P1: #{players[0].lives}/3 vs P2: #{players[1].lives}/3"
+  end
+  
   def run
     while players[0].lives != 0 && players[1].lives != 0
 
@@ -23,8 +39,8 @@ class Game
       else
         puts "Correct!"
       end
-      
-      self.currentTurn = self.currentTurn == 0 ? 1 : 0
+
+      self.advance_turn
       
       if self.game_over?
         self.game_end(self.currentTurn)
@@ -36,15 +52,4 @@ class Game
     
   end
 
-  def game_over?
-    players[0].lives == 0 || players[1].lives == 0
-  end
-
-  def game_end(currentTurn)
-    winning_player = players[currentTurn]
-    puts "Player #{winning_player.id} wins with a score of #{winning_player.lives}/3" 
-  end
 end
-
-game = Game.new
-game.run
