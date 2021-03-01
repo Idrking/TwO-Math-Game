@@ -15,9 +15,3 @@ class Question
     a == self.answer
   end
 end
-
-
-q = Question.new
-p q
-
-p q.correct?(12)
